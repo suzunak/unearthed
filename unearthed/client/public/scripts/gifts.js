@@ -31,7 +31,7 @@ const renderGifts = async () => {
 
             const link = document.createElement('a');
             link.textContent = 'Read More >';
-            link.href = '/gifts/gift.id';
+            link.href = `/gifts/${gift.id}`;
             link.setAttribute('role', 'button');
             bottomContainer.appendChild(link);
 
@@ -46,4 +46,10 @@ const renderGifts = async () => {
     }
 }
 
-renderGifts();
+requestedURL = window.location.href.split('/').pop();
+
+if (requestedURL) {
+    window.location.href = '../404.html';
+} else {
+    renderGifts();
+}
